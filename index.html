@@ -10,33 +10,60 @@
 </head>
 <body>
 
-
 <header class="header">
-        <div class="header__container">
-                <a class="header__link" href="#">Блог</a>
-                <a class="header__link" href="#">Решение проблем</a>
-                <a class="header__link" href="#">Инструкция</a>
-                <a class="header__link" href="#">Контакты</a>
-            <div class="header__open">
-                <a class="header__link" href="#">Регистрация</a>
-                    <a class="header__link open__modal"  onclick="openModal(event)" href="">ВХОД</a>
-            </div>
+    <div class="header__container">
+        <a class="header__link" href="#">Блог</a>
+        <a class="header__link" href="#">Решение проблем</a>
+        <a class="header__link" href="#">Инструкция</a>
+        <a class="header__link" href="#">Контакты</a>
+        <div class="header__open">
+            <a class="header__link" onclick="openBodal(event)" href="#">Регистрация</a>
+            <a class="header__link open__modal" onclick="openModal(event)" href="">ВХОД</a>
+        </div>
     </div>
-    </header>
+</header>
 
-
-<div class="modal">
+<!-- Модальное окно ВХОД -->
+<div class="modal"> <!-- ДОБАВЛЕНО: обёртка -->
     <div class="modal__content">
-
         <div class="modal__cont-1">
             <p class="sub_title">ВХОД В КАБИНЕТ</p>
-            <img class="modal__close" src="img/Cancel_Icon.svg.png" alt="закрыть" srcset="">
+            <img class="modal__close" src="img/Cancel_Icon.svg.png" alt="закрыть">
         </div>
+        <form>
+            <div class="form__content">
+                <input class="form__header" type="email" placeholder="Введите ваш E-mail">
+            </div>
+            <div class="form__content">
+                <input class="form__header" type="password" placeholder="Введите ваш пароль">
+            </div>
+            <div class="header__forget-block"><a class="forget__button" href="">Забыл пароль</a></div>
+            <div class="header__block-entrance">
+                <button type="button" class="entrance__button">ВОЙТИ</button>
+            </div>
+        </form>
+    </div>
+</div> <!-- ДОБАВЛЕНО: закрывающий тег -->
 
-        <div class="modal__cont-2">
-
+<!-- Модальное окно РЕГИСТРАЦИЯ -->
+<div class="modal modal--registration">
+    <div class="modal__content">
+        <div class="modal__cont-1">
+            <p class="sub_title">РЕГИСТРАЦИЯ</p>
+            <img class="modal__close" src="img/Cancel_Icon.svg.png" alt="закрыть">
         </div>
-
+        <form action="check.php" method="POST">
+            
+            <div class="form__content">
+                <input class="form__header" type="email" name="email" placeholder="Введите ваш E-mail" required>
+            </div>
+            <div class="form__content">
+                <input class="form__header" type="password" name="password" placeholder="Придумайте пароль" required>
+            </div>
+            <div class="header__block-entrance">
+                <button type="submit" class="entrance__button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            </div>
+        </form>
     </div>
 </div>
 
