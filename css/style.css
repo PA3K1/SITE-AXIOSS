@@ -123,3 +123,107 @@
     opacity: 1; /* Делаем видимой */
 }
 
+
+        .container {
+            display: flex;
+            align-items: center;
+            min-height: 70vh;
+            padding-left: 240px;
+            padding-top: 40px;
+            
+        }
+        
+        .logo-ring {
+            width: 440px;
+            height: 440px;
+            border: 80px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 50px;
+        }
+        
+        .logo-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .content {
+            margin-left: 70px;
+        }
+        
+        .head-h1 {
+        font-size: 40px;
+        text-transform: uppercase;
+        color: white;
+        margin: 80px 10px 0 0;
+        font-weight: 470;
+        }
+        
+        .head-text {
+        font-size: 19px;
+        color: white;
+        }
+        
+        .features {
+            margin: 25px 0;
+            
+        }
+        
+    .try-button {
+    background-color: #7775D1;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.try-button:hover {
+    background-color: #fff;
+    color: #7775D1;
+}
+
+
+.badge {
+    display: inline-flex; /* Изменить на flex */
+    align-items: center; /* Выровнять по центру */
+    margin: 30px 40px;
+    font-size: 15px;
+    color: #808080;
+    cursor: pointer;
+}
+
+.badge:hover:before {
+    animation-play-state: paused; /* Останавливаем анимацию */
+    opacity: 1; /* Делаем полную видимость */
+    text-shadow: 0 0 20px #7775D1, 0 0 30px #7775D1; /* Яркое свечение */
+}
+
+.badge:before {
+    content: "•";
+    margin-right: 15px;
+    color: #7775D1; /* Цвет точки */
+    animation: pulse 2s infinite;
+    font-size: 30px; /* или 28px, 32px */
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+        text-shadow: 0 0 15px #7775D1;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 15px #7775D1, 0 0 20px #7775D1;
+    }
+    100% {
+        opacity: 0.4;
+        text-shadow: 0 0 5px #7775D1;
+    }
+}
+
