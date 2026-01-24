@@ -139,108 +139,111 @@ window.onload = initializeApp;
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.card-game');
-    const texts = document.querySelectorAll('.text-games > div');
-    const dots = document.querySelectorAll('.dot');
-    const images = document.querySelectorAll('.card-game img');
-    const buttons = document.querySelectorAll('.text-game');
+
+
+// ============= СЛАЙДЕР БЕЗ ЗАДЕРЖЕК НА ТОЧКИ =============
+
+const gamesData = [
+    { title: "Pubg", img: "https://axios-macro.com/images/gradient/avif/lite.avif", url: "https://axios-macro.com/pubg" },
+    { title: "Apex", img: "https://axios-macro.com/images/gradient/avif/apex.avif", url: "https://axios-macro.com/apex" },
+    { title: "BF 2042", img: "https://axios-macro.com/images/gradient/avif/bf2042.avif", url: "https://axios-macro.com/battlefield2042" },
+    { title: "COD WARZONE", img: "https://axios-macro.com/images/gradient/avif/mw2.avif", url: "https://axios-macro.com/warzone" },
+    { title: "cs:go", img: "https://axios-macro.com/images/gradient/avif/csgo.avif", url: "https://axios-macro.com/csgo" },
+    { title: "РАСТ", img: "https://axios-macro.com/images/gradient/avif/rust.avif", url: "https://axios-macro.com/rust" },
+    { title: "R6 Siege", img: "https://axios-macro.com/images/gradient/avif/r6.avif", url: "https://axios-macro.com/r6siege" }
+];
+
+const galery = document.getElementById('galery');
+const textGames = document.getElementById('text-games');
+const dotsContainer = document.getElementById('dots');
+const totalRealItems = gamesData.length;
+const itemsToShow = 4;
+let currentIndex = totalRealItems;
+
+function createElements() {
+    const displayItems = [...gamesData, ...gamesData, ...gamesData];
     
-    let current = 0;
-    let timer;
-    
-    // Функция для получения правильного индекса с учетом бесконечности
-    function getCircularIndex(baseIndex, offset) {
-        let index = baseIndex + offset;
-        if (index >= 7) {
-            index = index % 7;
-        } else if (index < 0) {
-            index = (index % 7 + 7) % 7;
-        }
-        return index;
-    }
-    
-    // Основная функция показа слайдов
-    function showSlide(index) {
-        current = index;
+    displayItems.forEach((game) => {
+        const card = document.createElement('div');
+        card.className = 'card-game';
+        card.innerHTML = `<a href="${game.url}"><img src="${game.img}" alt="${game.title}"></a>`;
+        galery.appendChild(card);
         
-        // 1. Скрыть ВСЕ картинки и кнопки
-        cards.forEach(c => c.style.display = 'none');
-        texts.forEach(t => t.style.display = 'none');
-        
-        // 2. Показать 4 картинки с учетом бесконечности
-        for (let i = 0; i < 4; i++) {
-            const cardIndex = getCircularIndex(index, i);
-            
-            // Показать картинку
-            if (cards[cardIndex]) {
-                cards[cardIndex].style.display = 'block';
-                cards[cardIndex].style.order = i; // Важно для правильного порядка
-            }
-            
-            // Показать кнопку
-            if (texts[cardIndex]) {
-                texts[cardIndex].style.display = 'block';
-            }
-        }
-        
-        // 3. Обновить точки
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === current);
-        });
-    }
-    
-    // Следующий слайд (бесконечный)
-    function nextSlide() {
-        let next = current + 1;
-        if (next >= 7) next = 0; // Возвращаемся к началу
-        showSlide(next);
-    }
-    
-    // Предыдущий слайд (если нужно)
-    function prevSlide() {
-        let prev = current - 1;
-        if (prev < 0) prev = 6; // Переходим к последнему
-        showSlide(prev);
-    }
-    
-    // Обработчики для точек
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', function() {
-            clearInterval(timer);
-            showSlide(i);
-            timer = setInterval(nextSlide, 6000);
-        });
+        const btnItem = document.createElement('div');
+        btnItem.className = 'text-game-item';
+        btnItem.innerHTML = `<a class="text-game" href="${game.url}">${game.title}</a>`;
+        textGames.appendChild(btnItem);
     });
     
-    
-    // Автопрокрутка
-    function startAutoSlide() {
-        timer = setInterval(nextSlide, 19000);
+    // 7 точек - мгновенный клик
+    for (let i = 0; i < 7; i++) {
+        const dot = document.createElement('span');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', i);
+        // БЕЗ ЗАДЕРЖЕК - кликаем сразу
+        dot.onclick = () => {
+            const targetIndex = i + totalRealItems;
+            currentIndex = targetIndex;
+            updateSlider();
+        };
+        dotsContainer.appendChild(dot);
+    }
+}
+
+function updateSlider(withTransition = true) {
+    if (withTransition) {
+        galery.classList.add('transition');
+        textGames.classList.add('transition');
+    } else {
+        galery.classList.remove('transition');
+        textGames.classList.remove('transition');
     }
     
-    // Остановка при наведении
-    const container = document.querySelector('.games-slider-container');
-    if (container) {
-        container.addEventListener('mouseenter', () => clearInterval(timer));
-        container.addEventListener('mouseleave', startAutoSlide);
-    }
+    const containerWidth = document.querySelector('.galery-wrapper').clientWidth;
+    const gap = 20;
+    const cardWidth = (containerWidth - (itemsToShow - 1) * gap) / itemsToShow;
+    const step = cardWidth + gap;
+    const offset = -currentIndex * step;
     
-    // Добавим немного CSS для плавности
-    const style = document.createElement('style');
-    style.textContent = `
-        .galery {
-            transition: transform 0.5s ease-in-out;
+    galery.style.transform = `translateX(${offset}px)`;
+    textGames.style.transform = `translateX(${offset}px)`;
+    
+    // Обновляем активную точку
+    const realIndex = currentIndex % totalRealItems;
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === realIndex);
+    });
+    
+    // Бесконечная прокрутка без transitionend
+    setTimeout(() => {
+        if (currentIndex < totalRealItems) {
+            currentIndex += totalRealItems;
+            updateSlider(false);
         }
-        .card-game {
-            transition: opacity 0.5s ease;
+        if (currentIndex >= totalRealItems * 2) {
+            currentIndex -= totalRealItems;
+            updateSlider(false);
         }
-    `;
-    document.head.appendChild(style);
-    
-    // Запуск
-    showSlide(0);
-    startAutoSlide();
-    
-    
-});
+    }, 500); // Через время анимации
+}
+
+let autoPlay = setInterval(() => {
+    currentIndex++;
+    updateSlider();
+}, 5000);
+
+const container = document.querySelector('.games-slider-container');
+container.onmouseenter = () => clearInterval(autoPlay);
+container.onmouseleave = () => {
+    autoPlay = setInterval(() => {
+        currentIndex++;
+        updateSlider();
+    }, 5000);
+};
+
+// Инициализация
+createElements();
+setTimeout(() => updateSlider(false), 50);
+
+// Ресайз
+window.addEventListener('resize', () => updateSlider(false));

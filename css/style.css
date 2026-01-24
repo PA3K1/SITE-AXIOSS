@@ -324,107 +324,116 @@
 
 
 
-/* Слайдер */
-.games-slider-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px 0;
-}
+        .big-text {
+            text-align: center;
+            padding: 35px 0 40px;
+        }
+        .big-text h1 {
+            font-size: 32px;
+            color: white;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .games-slider-container {
 
-.galery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 20px;
-}
+            padding: 20px 20;
+            position: relative;
+        }
+        .galery-wrapper {
+            width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .galery {
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .card-game {
+            flex: 0 0 calc(25% - 15px);
+            position: relative;
+        }
+        .card-game img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 20px;
 
-.card-game {
-    flex: 0 0 22%;
-}
+            transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            display: block;
+        }
 
-.card-game img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid #333;
-    transition: filter 0.3s ease;
-}
 
-/* Эффект при наведении на всю галерею */
-.galery:hover img {
-    filter: grayscale(100%);
-}
+        .text-games-wrapper {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 25px;
+        }
+        .text-games {
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .text-game-item {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            text-align: center;
+        }
+        .text-game {
+            display: inline-block;
+            background-color: rgb(26, 29, 38);
+            border-radius: 25px;
+            padding: 13px 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            min-width: 140px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+        .text-game:hover {
+            background-color: #7775D1;
+            box-shadow: 0 0 20px rgba(119, 117, 209, 0.4);
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .dot.active {
+            background-color: #7775D1;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px #7775D1;
+        }
+        .galery.transition, .text-games.transition {
+            transition: transform 0.5s ;
+        }
 
-.galery .card-game:hover img {
-    filter: grayscale(0%);
-}
-
-/* Кнопки */
-.text-games {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.text-games > div {
-    flex: 0 0 22%;
-    text-align: center;
-}
-
-.text-game {
-    display: inline-block;
-    background-color: rgb(26, 29, 38);
-    border-radius: 25px;
-    padding: 13px 30px;
-    color: white;
-    text-decoration: none;
-    font-size: 19px;
-    min-width: 140px;
-    transition: background-color 0.3s ease;
-}
-
+        /* Эффект при наведении на кнопки */
 .text-game:hover {
     background-color: #7775D1;
+    box-shadow: 0 0 20px rgba(119, 117, 209, 0.4);
 }
 
-/* Точки */
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
+/* При наведении на кнопку - подсвечиваем соответствующую картинку */
+.text-game:hover ~ .galery .card-game img {
+    filter: grayscale(100%) brightness(0.5);
 }
 
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
+.text-game:hover ~ .galery .card-game:nth-child(1) img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+    border-color: #7775D1;
 }
-
-.dot.active {
-    background-color: #7775D1;
-    transform: scale(1.2);
-}
-
-.dot:hover {
-    background-color: rgba(119, 117, 209, 0.7);
-}
-
-/* Заголовок */
-.big-text {
-    text-align: center;
-    padding: 35px 0 40px;
-}
-
-.big-text h1 {
-    font-size: 32px;
-    color: white;
-    margin: 0;
-}
-
-
