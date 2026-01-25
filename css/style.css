@@ -111,12 +111,10 @@ body {
     opacity: 0;
     transition: left 0.3s ease, opacity 0.3s ease;
 }
-
 .dropdown-list a:hover::before {
     left: -10px;
     opacity: 1;
 }
-
 .container {
     display: flex;
     align-items: center;
@@ -125,7 +123,6 @@ body {
     padding-top: 40px;
     
 }
-
 .logo-ring {
     width: 440px;
     height: 440px;
@@ -136,7 +133,6 @@ body {
     align-items: center;
     margin-right: 50px;
 }
-
 .logo-text {
     font-size: 60px;
     font-weight: bold;
@@ -316,6 +312,7 @@ body {
 
 
 
+/*ЭТО СЛИТИ ДЛЯ СЛАЙДЕРА*/
 
 .big-slide-text {
     display: flex;
@@ -425,3 +422,108 @@ body {
     transition: transform 0.5s;
 }
 
+
+/* СТИЛИ ДЛЯ КАРТОЧЕК С ЦЕНАМИ */
+
+.big-price-text{
+    padding-top: 130px;
+}
+
+.text-card {
+    background-color: #7775D1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 280px;
+    height: 380px;
+    margin: 40px;
+    border-radius: 20px;
+    position: relative; /* Для позиционирования кнопки внутри */
+}
+
+.container-cards{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+
+.text-linear {
+    display: flex;
+    align-items: center;
+    margin: 60px 0; 
+}
+
+.text-linear p {
+    display: flex;
+    align-items: center;
+}
+
+.text-linear svg {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.text-linear circle {
+    cx: 10; 
+    cy: 10;
+    r: 5;
+    fill: #fff;
+}
+
+.subtitle-big {
+    font-size: 33px;
+    margin: 10px 0 0 10px;
+
+}
+.mini-sub-text {
+    font-size: 16px;
+}
+
+.price_subtitle-text {
+    font-size: 33px;
+    margin: 0 0 0 20px;
+}
+
+.sale-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7775D1;
+    background-color: #fff;
+    border-radius: 30px;
+    width: 260px;
+    height: 60px;
+    font-size: 21px;
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: -48px; /* Половина высоты кнопки (60px/2 = 30px) */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Точное центрирование */
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none; /* Убираем границу если это кнопка */
+    font-weight: 500;
+}
+
+.sale-product:hover {
+    transform: translateX(-50%) translateY(-6px); /* Поднимаем на 4px */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    background-color: #f8f8f8;
+}
+
+.days {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #15171D;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    font-size: 20px;
+    top: -40px;          /* Перемещаем вверх */
+    right: -40px;        /* Перемещаем вправо */
+    border: 3px solid #7775D1;  /* Фиолетовый бордер */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Необязательная тень для объема */
+}
