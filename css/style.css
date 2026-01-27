@@ -495,19 +495,19 @@ body {
     width: 260px;
     height: 60px;
     font-size: 21px;
-    position: absolute; /* Абсолютное позиционирование */
-    bottom: -48px; /* Половина высоты кнопки (60px/2 = 30px) */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
+    position: absolute;
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%); 
     z-index: 1;
     cursor: pointer;
     transition: all 0.2s ease;
-    border: none; /* Убираем границу если это кнопка */
+    border: none;
     font-weight: 500;
 }
 
 .sale-product:hover {
-    transform: translateX(-50%) translateY(-6px); /* Поднимаем на 4px */
+    transform: translateX(-50%) translateY(-6px);
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     background-color: #f8f8f8;
 }
@@ -522,8 +522,74 @@ body {
     width: 120px;
     height: 120px;
     font-size: 20px;
-    top: -40px;          /* Перемещаем вверх */
-    right: -40px;        /* Перемещаем вправо */
-    border: 3px solid #7775D1;  /* Фиолетовый бордер */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Необязательная тень для объема */
+    top: -40px;     
+    right: -40px;
+    border: 3px solid #7775D1; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.mini-container {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-text  {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 0px 25px ;
+    border-radius: 30px;
+    background-color: #1E2026;
+    height: 60px;
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mini-text:hover {
+    transform: translateY(-4px);
+}
+
+.mini-text.active {
+    background-color: #7775D1 !important;
+    box-shadow: 0 0 15px rgba(119, 117, 209, 0.5) !important;
+    transform: translateY(-4px);
+}
+
+.container-mini-video {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.mini-video-ax {
+    width: 900px;
+    height: 506px;
+    border-radius: 20px;
+    border: 2px solid #7775D1; 
+    box-shadow: 
+        0 10px 30px rgba(119, 117, 209, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.3s ease;
+}
+
+.mini-video-ax:hover {
+    transform: scale(1.01);
+    box-shadow: 
+        0 15px 40px rgba(119, 117, 209, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }

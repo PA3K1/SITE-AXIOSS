@@ -73,6 +73,68 @@ function setupMasterCardSelection() {
     }
 }
 
+
+
+
+// ============= ПЕРЕКЛЮЧАТЕЛЬ КАРТИНОК =============
+
+function setupVideoButtons() {
+    const videoButtons = document.querySelectorAll('.mini-text');
+    const videoFrame = document.getElementById('ax-mini');
+    const videoContainer = document.querySelector('.container-mini-video');
+    
+const videoUrls = {
+    'rainbow-six': 'https://www.youtube.com/embed/HqpjPnctPtY',
+    'rust': 'https://www.youtube.com/embed/ex1F_FYusYI',
+    'pubg': 'https://www.youtube.com/embed/SghEK_6I0w0',
+    'apex': 'https://www.youtube.com/embed/6hVBI7ZZe5s',
+    'csgo': 'https://www.youtube.com/embed/-UNCF6lNNb8'
+};
+    
+    // Первая кнопка активна по умолчанию
+    videoButtons[0].classList.add('active');
+    
+    videoButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Если уже активна - ничего не делаем
+            if (this.classList.contains('active')) return;
+            
+            // 1. Добавляем эффект нажатия на текущую активную кнопку
+            const currentActive = document.querySelector('.mini-text.active');
+            if (currentActive) {
+                currentActive.classList.add('switching');
+            }
+            
+            // 2. Плавно скрываем видео
+            videoContainer.style.opacity = '0.9';
+            
+            // 3. Через 200ms меняем всё
+            setTimeout(() => {
+                // Убираем классы у всех кнопок
+                videoButtons.forEach(btn => {
+                    btn.classList.remove('active', 'switching');
+                });
+                
+                // Добавляем active к нажатой
+                this.classList.add('active');
+                
+                // Меняем видео
+                const videoKey = this.getAttribute('data-video');
+                if (videoUrls[videoKey]) {
+                    videoFrame.src = videoUrls[videoKey];
+                }
+                
+                // Плавно показываем новое видео
+                setTimeout(() => {
+                    videoContainer.style.opacity = '1';
+                }, 50);
+                
+            }, 200); // Совпадает с временем opacity transition
+        });
+    });
+}
+
+
 // ============= ПОЛЬЗОВАТЕЛИ И АВТОРИЗАЦИЯ =============
 let users = [
     {email: "admin@test.com", password: "12345"},
@@ -390,7 +452,9 @@ function initializeAll() {
     setupMasterCardSelection();
     // Автоплей слайдера
     startAutoPlay();
-    
+
+    setupVideoButtons();
+
     // Обработка изменения размера окна
     window.addEventListener('resize', () => updateSlider(false)); // Без анимации
     
