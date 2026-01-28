@@ -593,3 +593,264 @@ body {
         0 15px 40px rgba(119, 117, 209, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+     z-index: 1000; /* ← И эту тоже (можно не обязательно) */
+}
+
+.modal__content {
+    background: #1E2026;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    min-height: 370px;
+     z-index: 1001; /* ← И эту тоже (можно не обязательно) */
+}
+
+.modal__cont-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.modal__close {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    transition: transform 0.2s;
+}
+.modal__close:hover{
+    transform: rotate(90deg);
+}
+
+.sub__title {
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+}
+
+
+.form__header {
+    width: 320px;
+    height: 49px;
+    background-color: #2d3138;
+    border: 0;
+    border-radius: 5px;
+    padding: 14px 20px;
+    font-size: 16px;
+}
+
+
+.form__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.entrance__button {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 12px 20px;
+    background-color: #7775D1;
+    border-radius: 50px;
+    border: 0;
+
+}
+
+.entrance__button-2 {
+        width: 320px;
+    height: 49px;
+}
+
+.entrance__button:hover {
+    background-color: white; 
+    color: #7775D1;
+}
+
+.forget__button{
+    color: #4d5057;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header__block-entrance{
+    padding: 37px 35px;
+}
+
+.header__forget-block {
+    padding-left: 42px;
+}
+
+.forget__button:hover {
+    text-decoration: none;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+.modal--registration .form__content {
+    padding: 10px;
+}
+
+.windoy__content{
+    max-width: 400px;
+    min-height: 474px;
+}
+
+.form__content__captha{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.captha{
+    width: 150px;
+    height: 50px;
+}
+
+.form__captha{
+    width: 160px;
+    height: 49px;
+}
+
+.header__open span{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff;
+    opacity: .3;
+    transition: .12s;
+}
+
+
+
+.windoy__content{
+    max-width: 400px;
+    min-height: 474px;
+}
+
+.form__content__captha{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.captha{
+    width: 150px;
+    height: 50px;
+}
+
+.form__captha{
+    width: 160px;
+    height: 49px;
+}
+
+.header__open span{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff;
+    opacity: .3;
+    transition: .12s;
+}
+
+
+
+
+.image_focus {
+    box-sizing: border-box; /* ← ВАЖНО! */
+    border-radius: 9px;
+    margin-left: 20px;
+    border: 3px solid transparent; /* Прозрачный бордер по умолчанию */
+
+}
+
+.modal, .modal_windoy {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7); /* Полупрозрачный чёрный фон */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__content-3 {
+    border: 2px solid #7775D1;
+    padding: 20px;;
+    position: relative;
+    background: #1E2026;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    min-height: 370px;
+     z-index: 1001; /* ← И эту тоже (можно не обязательно) */ 
+    position: absolute;
+}
+
+.focus-modal-text {
+    font-size: 22px;
+    font-weight: 600;
+    padding:  0 0 0 20px;
+}
+
+.modal-focus-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.modal-focus-link-container {
+    display: flex;
+    justify-content: center;
+    background-color: #7775D1;
+    width: 360px;
+    height: 55px;
+    border-radius: 26px;
+    margin-top: 80px;
+}
+
+.image_focus.selected {
+    border: 3px solid #7775D1 !important;
+    filter: brightness(0.9) !important;
+}
